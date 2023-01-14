@@ -22,7 +22,7 @@ const loadApplication = async () => {
   });
 };
 
-export default function App() {
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
