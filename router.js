@@ -6,6 +6,7 @@ import CreatePostsScreen from './Screens/main/CreatePostsScreen/CreatePostsScree
 import LoginScreen from './Screens/auth/LoginScreen/LoginScreen';
 import ProfileScreen from './Screens/main/ProfileScreen/ProfileScreen';
 import PostsScreen from './Screens/main/PostsScreen/PostsScreen';
+import { useUser } from './AppContext';
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -17,9 +18,13 @@ import {
 } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { View } from 'react-native';
+import { useContext } from 'react';
 
-export const useRoute = (isAuth) => {
-  if (!isAuth) {
+export const useRoute = () => {
+  const { isLogged } = useUser();
+  // const isLogged = useContext(useUser);
+
+  if (!isLogged) {
     return (
       <AuthStack.Navigator>
         <AuthStack.Screen
@@ -36,7 +41,10 @@ export const useRoute = (isAuth) => {
     );
   }
   return (
-    <MainTab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+    <MainTab.Navigator
+      screenOptions={{ tabBarShowLabel: false }}
+      initialRouteName="Posts"
+    >
       <MainTab.Screen
         options={{
           headerShown: false,

@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  ScrollView,
-} from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { useState, useEffect } from 'react';
 import { EvilIcons, FontAwesome } from '@expo/vector-icons';
 
@@ -23,71 +16,69 @@ export default function DefaultScreen({ route, navigation }) {
   console.log('posts', posts);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.wrap}>
-          <View style={styles.userList}>
-            <View style={styles.userItem}>
-              <Image
-                style={styles.avatar}
-                source={require('../../../assets/images/Rectangle22.jpg')}
-              />
-              <View style={styles.userInfoWrap}>
-                <Text style={styles.name}>Natali Romanova</Text>
-                <Text style={styles.email}>email@example.com</Text>
-              </View>
+    // <ScrollView>
+    <View style={styles.container}>
+      <View style={styles.wrap}>
+        <View style={styles.userList}>
+          <View style={styles.userItem}>
+            <Image
+              style={styles.avatar}
+              source={require('../../../assets/images/Rectangle22.jpg')}
+            />
+            <View style={styles.userInfoWrap}>
+              <Text style={styles.name}>Natali Romanova</Text>
+              <Text style={styles.email}>email@example.com</Text>
             </View>
           </View>
-          <View style={styles.feed}>
-            <View style={styles.post}>
-              <View style={styles.imageWrap}>
-                <View style={styles.imageTemplate}></View>
-              </View>
-              <Text style={styles.imageName}>Forest</Text>
-              <View style={styles.description}>
-                <View style={styles.comment}>
-                  <FontAwesome
-                    name="comment-o"
-                    size={24}
-                    color="#BDBDBD"
-                    title="comments"
-                    onPress={() => navigation.navigate('Comments')}
-                  />
-                  <Text style={styles.commentCounter}>0</Text>
-                </View>
-                <View style={styles.loc}>
-                  <EvilIcons
-                    name="location"
-                    size={30}
-                    color="#BDBDBD"
-                    title="map"
-                    onPress={() => navigation.navigate('Map')}
-                  />
-                  <Text style={styles.locationText}>
-                    Ivano-Frankivs'k, Ukraine
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <FlatList
-            data={posts}
-            keyExtractor={(item, indx) => indx.toString()}
-            renderItem={({ item }) => (
-              <View>
-                <Image
-                  source={{ uri: item.photo }}
-                  style={{
-                    width: 350,
-                    height: 200,
-                  }}
-                />
-              </View>
-            )}
-          />
         </View>
+        <FlatList
+          data={posts}
+          keyExtractor={(item, indx) => indx.toString()}
+          renderItem={({ item }) => (
+            <View>
+              <View style={styles.post}>
+                <View style={styles.imageWrap}>
+                  <View style={styles.imageTemplate}>
+                    <Image
+                      source={{ uri: item.photo }}
+                      style={{
+                        width: 350,
+                        height: 200,
+                      }}
+                    />
+                  </View>
+                </View>
+                <Text style={styles.imageName}>Forest</Text>
+                <View style={styles.description}>
+                  <View style={styles.comment}>
+                    <FontAwesome
+                      name="comment-o"
+                      size={24}
+                      color="#BDBDBD"
+                      title="comments"
+                      onPress={() => navigation.navigate('Comments')}
+                    />
+                    <Text style={styles.commentCounter}>0</Text>
+                  </View>
+                  <View style={styles.loc}>
+                    <EvilIcons
+                      name="location"
+                      size={30}
+                      color="#BDBDBD"
+                      title="map"
+                      onPress={() => navigation.navigate('Map')}
+                    />
+                    <Text style={styles.locationText}>
+                      Ivano-Frankivs'k, Ukraine
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          )}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 

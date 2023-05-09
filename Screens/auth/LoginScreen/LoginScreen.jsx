@@ -11,39 +11,25 @@ import {
   TouchableWithoutFeedback,
   Platform,
 } from 'react-native';
-// import { useForm, Controller } from 'react-hook-form';
+import { useUser } from '../../../AppContext';
 
 const initialState = { email: '', password: '' };
 
-export default function LoginScreen({ navigation, isAuth }) {
+export default function LoginScreen({ navigation }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [data, setData] = useState(initialState);
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPass, setIsFocusedPass] = useState(false);
 
-  // const {
-  //   control,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   defaultValues: {
-  //     email: '',
-  //     password: '',
-  //   },
-  // });
-
-  // const onSubmit = (data) => console.log(data);
+  const { logIn, isAuth } = useUser();
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
     console.log(data);
     setData(initialState);
+    // navigation.navigate('Feed', { data, isAuth });
   };
-
-  // if (isAuth) {
-  //   navigation.navigate('Posts');
-  // }
 
   const onLogin = () => {
     console.log('Credentials', data);
@@ -60,18 +46,9 @@ export default function LoginScreen({ navigation, isAuth }) {
           <View
             style={{
               ...styles.form,
-
-              // marginBottom: Keyboard.dismiss ? 0 : 150,
-              // paddingTop: Keyboard.dismiss ? 70 : 0,
             }}
           >
             <Text style={styles.regTitle}>Login</Text>
-            {/* <Controller
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({ field: { onChange, onBlur, value } }) => ( */}
             <TextInput
               style={[
                 styles.input,
@@ -80,10 +57,6 @@ export default function LoginScreen({ navigation, isAuth }) {
                   borderWidth: 1,
                 },
               ]}
-              // placeholder="Email"
-              // onBlur={onBlur}
-              // onChangeText={onChange}
-              // value={value}
               value={data.email}
               placeholder="E-mail"
               textContentType="emailAddress"
@@ -99,10 +72,6 @@ export default function LoginScreen({ navigation, isAuth }) {
                 setData((prevState) => ({ ...prevState, email: value }))
               }
             />
-            {/* )} */}
-            {/* name="Email" */}
-            {/* /> */}
-            {/* {errors.Email && <Text>This is required.</Text>} */}
             <View style={styles.inputWrap}>
               <TextInput
                 style={[
@@ -133,10 +102,14 @@ export default function LoginScreen({ navigation, isAuth }) {
             {/* use onLogin here to have console.log info ====> */}
             <TouchableOpacity
               style={styles.btn}
-              onPress={keyboardHide}
-              // onPress={
-              //   (() => navigation.navigate('Register'), handleSubmit(onSubmit))
-              // }
+              onPress={
+                logIn
+                // () =>
+                // navigation.navigate('Posts', {
+                //   screen: 'Feed',
+                //   params: { data },
+                // })
+              }
             >
               <Text style={styles.btnText}>Login</Text>
             </TouchableOpacity>

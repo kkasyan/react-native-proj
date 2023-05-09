@@ -13,8 +13,6 @@ import {
   Feather,
 } from '@expo/vector-icons';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 export default function ProfileScreen() {
   return (
     <View style={styles.container}>

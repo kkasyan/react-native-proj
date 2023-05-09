@@ -147,11 +147,7 @@ export default function RegistrationScreen({ navigation }) {
               />
               <Text style={styles.showPass}>Show</Text>
             </View>
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={keyboardHide}
-              // onPress={() => navigation.navigate('Login')}
-            >
+            <TouchableOpacity style={styles.btn} onPress={keyboardHide}>
               <Text style={styles.btnText}>Register</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>

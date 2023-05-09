@@ -13,7 +13,7 @@ import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
 
-import { FontAwesome, Feather, EvilIcons, AntDesign } from '@expo/vector-icons';
+import { FontAwesome, Feather, EvilIcons } from '@expo/vector-icons';
 
 export default function CreatePostsScreen({ navigation }) {
   const [camera, setCamera] = useState(null);
@@ -60,7 +60,7 @@ export default function CreatePostsScreen({ navigation }) {
   };
 
   const sendPost = () => {
-    navigation.navigate('Default', { photo });
+    navigation.navigate('Feed', { photo });
   };
 
   return (

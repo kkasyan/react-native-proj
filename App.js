@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
+import { UserProvider } from './AppContext';
 
 import { useRoute } from './router';
 
@@ -26,5 +27,11 @@ export default function App() {
     return null;
   }
 
-  return <NavigationContainer>{routing}</NavigationContainer>;
+  return (
+    <>
+      <UserProvider>
+        <NavigationContainer>{routing}</NavigationContainer>
+      </UserProvider>
+    </>
+  );
 }
