@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import {
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   Dimensions,
   useWindowDimensions,
 } from 'react-native';
+import { useUser } from '../../../AppContext';
 
 const initialState = { login: '', email: '', password: '' };
 
@@ -23,6 +24,8 @@ export default function RegistrationScreen({ navigation }) {
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPass, setIsFocusedPass] = useState(false);
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
+  const { logIn } = useUser();
+
   // const [dimensions, setDimentions] = useState(
   //   Dimensions.get('window').height - 175
   // );
@@ -57,10 +60,6 @@ export default function RegistrationScreen({ navigation }) {
           <View
             style={{
               ...styles.form,
-              // marginBottom: isShowKeyboard ? 0 : 78,
-              // marginBottom: Keyboard.dismiss ? 0 : 78,
-              // height: dimensions,
-              // height: window.height < 350 ? height - 50 : height - 150,
             }}
           >
             <View style={styles.avatarWrap}>
@@ -147,7 +146,7 @@ export default function RegistrationScreen({ navigation }) {
               />
               <Text style={styles.showPass}>Show</Text>
             </View>
-            <TouchableOpacity style={styles.btn} onPress={keyboardHide}>
+            <TouchableOpacity style={styles.btn} onPress={logIn}>
               <Text style={styles.btnText}>Register</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>

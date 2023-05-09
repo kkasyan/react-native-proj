@@ -21,14 +21,13 @@ export default function LoginScreen({ navigation }) {
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPass, setIsFocusedPass] = useState(false);
 
-  const { logIn, isAuth } = useUser();
+  const { logIn } = useUser();
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
     console.log(data);
     setData(initialState);
-    // navigation.navigate('Feed', { data, isAuth });
   };
 
   const onLogin = () => {

@@ -18,11 +18,9 @@ import {
 } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { View } from 'react-native';
-import { useContext } from 'react';
 
 export const useRoute = () => {
   const { isLogged } = useUser();
-  // const isLogged = useContext(useUser);
 
   if (!isLogged) {
     return (
