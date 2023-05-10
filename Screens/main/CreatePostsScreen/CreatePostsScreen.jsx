@@ -21,6 +21,8 @@ export default function CreatePostsScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [hover, setHover] = useState(false);
+  const [title, setTitle] = useState('');
+  const [inputLocation, setInputLocation] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -115,7 +117,14 @@ export default function CreatePostsScreen({ navigation }) {
           </View>
           <View>
             <Text style={styles.addText}>Upload photo</Text>
-            <TextInput style={styles.inputName} placeholder="Name..." />
+            <TextInput
+              style={styles.inputName}
+              placeholder="Name..."
+              value={title}
+              onChangeText={(value) =>
+                setTitle((prevState) => ({ ...prevState, value }))
+              }
+            />
             <View style={styles.locationWrap}>
               <EvilIcons
                 style={styles.locationIcon}
@@ -126,6 +135,10 @@ export default function CreatePostsScreen({ navigation }) {
               <TextInput
                 style={styles.inputLocation}
                 placeholder="Location..."
+                value={inputLocation}
+                onChangeText={(value) =>
+                  setInputLocation((prevState) => ({ ...prevState, value }))
+                }
               />
             </View>
           </View>

@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
 
   const logIn = () => {
     setIsLogged(true);
-    console.log('click');
   };
 
   // const logOut = () => {

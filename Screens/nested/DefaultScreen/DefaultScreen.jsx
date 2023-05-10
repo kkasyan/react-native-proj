@@ -42,13 +42,14 @@ export default function DefaultScreen({ route, navigation }) {
                     <Image
                       source={{ uri: item.photo }}
                       style={{
-                        width: 350,
-                        height: 200,
+                        width: 360,
+                        height: 240,
+                        borderRadius: 10,
                       }}
                     />
                   </View>
                 </View>
-                <Text style={styles.imageName}>Forest</Text>
+                <Text style={styles.imageName}>Title</Text>
                 <View style={styles.description}>
                   <View style={styles.comment}>
                     <FontAwesome
@@ -68,9 +69,7 @@ export default function DefaultScreen({ route, navigation }) {
                       title="map"
                       onPress={() => navigation.navigate('Map')}
                     />
-                    <Text style={styles.locationText}>
-                      Ivano-Frankivs'k, Ukraine
-                    </Text>
+                    <Text style={styles.locationText}>Location</Text>
                   </View>
                 </View>
               </View>
